@@ -1,4 +1,4 @@
-LifoSource -- Version by Dotto
+LifoSource / version by dotto
 ==========
 
 Esto es un fork del MMORPG "LifoSource".
