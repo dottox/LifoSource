@@ -1,145 +1,81 @@
 body {
-  font-family: sans-serif, Verdana, Arial, Helvetica;
-  font-size: 12px;
-  background: #DDDDFF;
-  color: #000000;
+	background: linear-gradient(to bottom, rgb(150, 172, 192), #a6bcd8);
+	font-size: 18px;
+	font-family: sans-serif, Verdana, Arial, Helvetica;
+	margin: 0;
+	height: 100%;
 }
 
-img {
-  border:0;
-  vertical-align: middle;
-}
-div#menu {
-  text-align: center;
-  margin: 10px;
-  padding: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #000000;
+p {
+	margin: 0;
 }
 
-table.add {
-  text-align: center;
-  margin: auto;
-  color: red;
+nav#bs {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgb(64, 78, 99);
 }
 
-table.ad {
-  text-align: center;
-  margin: auto;
-  color: red;
+div#bs-div {
+	display: flex;
+	padding: 10px;
+	margin: 0px 20%;
+	justify-content: center;
+	font-size: 1.5em;
 }
 
-img.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 400px;
-  height: 60px;
-
-}
-div#rights {
-  text-align: center;
-  margin: 10px;
-  padding: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #000000;
+a#bs-item {
+	color: whitesmoke;
+	padding: 2px;
+	margin: 0px auto;
+	text-decoration: none;
 }
 
-span.linkreg {
-  font-size: 15px;
-  text-decoration: underline;
-  font-weight: bold;
-}
-div#contenido {
-  text-align: justify;
-  margin: 20px;
-  padding: 5px;
+img#logo {
+	display: block;
+	width: 50%;
+	margin: 10px auto;
 }
 
-div#error {
-  text-align: center;
-  color: red;
+p#page-desc {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	padding: 0 0 10px 0;
+	height: 40px;
+	line-height: 40px;
+	margin: 0px;
+	text-wrap: nowrap;
 }
 
-div#mensaje {
-  text-align: center;
-  color: blue;
+p#session-msg {
+	display: block;
+	text-align: center;
+	padding: 5px 0 0 0;
+	height: 40px;
+	line-height: 40px;
+	margin: 0px;
+	text-wrap: nowrap;
 }
 
-
-table#login {
-  padding: 15px;
-  margin: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #000000;
+form#login-form {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	width: fit-content;
+	outline: 1px solid black;
+	margin: auto;
+	align-items: center;
 }
 
-table#clanes {
-  padding: 15px;
-  margin: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #000000;
-}
-table#mensajet {
-  padding: 15px;
-  margin: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #000000;
+input#login-form-input {
+	size: 24;
+	margin: 3px 0px;
 }
 
-div.news {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-table.texto {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 30px;
-  padding: 5px;
-  text-align: justify;
-}
-
-table.subastas {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 30px;
-  padding: 5px;
-  text-align: center;
-}
-
-table.highscores {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-table.highscores td {
-  padding: 5px;
-  width: 100px;
-}
-
-table.highscores td.jugador {
-  text-decoration: underline;
-}
-
-a:link {
-  color: blue;
-  text-decoration: none;
-}
-a:visited {
-  color: blue;
-  text-decoration: none;
-}
-a:active {
-  color: blue;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+input#login-form-button {
+	size: 12;
+	margin: 4px 0px;
 }

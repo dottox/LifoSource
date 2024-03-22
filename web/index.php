@@ -1,4 +1,6 @@
 <?php
-  header('Location: estado.php');
-  exit();
+
+header('Location: inicio.php');
+exit();
+
 ?>
