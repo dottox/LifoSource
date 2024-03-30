@@ -1,7 +1,5 @@
 <?php
 
-header('Location: ../inicio.php');
-exit();
 
 db_query("INSERT INTO {$conftp}trabajos VALUES (600,'10 minutos / 100 exp / 10 oro',100,10,0)");
 //db_query("INSERT INTO {$conftp}trabajos VALUES (601,'10 minutos / 50 exp / 20 oro',50,20,0)");
@@ -953,10 +951,10 @@ db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Tercero','Z-E
 
 
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Animal marino','Mascota','hdanimalmarino',1,0,1,100, 0  ,0,0,0,6)");
-db_query("INSERT INTO {$conftp}mascotas VALUES ('Animal marino','Animal marino','hdanimalmarino','Jarra de agua',0,1,0,1,10,0,1,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Rata topo','Mascota','hdanimalmarino',1,0,1,100, 0  ,0,0,0,6)");
-db_query("INSERT INTO {$conftp}mascotas VALUES ('Rata topo','Rata topo','hdratatopo','Trigo',0,1,0,1,10,0,1,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Animal marino','Mascota','hdanimalmarino',1,0,1,100, 0  ,0,0,0,6)");
+// db_query("INSERT INTO {$conftp}mascotas VALUES ('Animal marino','Animal marino','hdanimalmarino','Jarra de agua',0,1,0,1,10,0,1,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Rata topo','Mascota','hdanimalmarino',1,0,1,100, 0  ,0,0,0,6)");
+// db_query("INSERT INTO {$conftp}mascotas VALUES ('Rata topo','Rata topo','hdratatopo','Trigo',0,1,0,1,10,0,1,4)");
 
 
 #NEW LIFO UPDATE
@@ -1502,10 +1500,6 @@ db_query("INSERT INTO {$conftp}objetos VALUES ('Anillo de coco','Anillo','rfh', 
 
 db_query("INSERT INTO {$conftp}objetos VALUES ('Oculo','Mascota','oculo',0,0,1,40000000, 0  ,0,0,0,6)");
 db_query("INSERT INTO {$conftp}mascotas VALUES ('Oculo','Oculo','oculo','Estrella Polar',50,50,75,75,25,25,1,5)");
-
-db_query("INSERT INTO {$conftp}mascotas VALUES ('Oculo','Oculo','oculo','Estrella Polar',50,50,75,75,25,25,1,5)");
-
-db_query("INSERT INTO {$conftp}jugadores VALUES ('Oculo','Oculo','oculo','Estrella Polar',50,50,75,75,25,25,1,5)");
 
 $pwdHash = pwdHash('Admin',$confadminpass);
 db_query("INSERT INTO {$conftp}jugadores (nombrejug,puntos,password,email,admin) VALUES ('Admin',0,'{$pwdHash}','{$confmail}',1)");

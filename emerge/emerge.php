@@ -1,8 +1,6 @@
 #!/usr/bin/php
 <?php
 
-header('Location: ../inicio.php');
-exit();
 
 include('../w_database.php');
 include('../w_aux.php');
@@ -70,7 +68,8 @@ db_query("CREATE TABLE {$conftp}trabajos (
   segundos INT(14) PRIMARY KEY,
   nombre VARCHAR(70) NOT NULL UNIQUE,
   puntos INT(20) NOT NULL,
-  oro BIGINT(30) NOT NULL
+  oro BIGINT(30) NOT NULL,
+  espremium INT(1) NOT NULL DEFAULT 0
 ) ENGINE = {$engine} CHARACTER SET latin1;");
 
 db_query("CREATE TABLE {$conftp}jugadores (
@@ -104,7 +103,7 @@ db_query("CREATE TABLE {$conftp}jugadores (
   vencedor INT(10) NOT NULL DEFAULT 0,
   vencido INT(10) NOT NULL DEFAULT 0,
   
-  zonahoraria INT(3) NOT NULL DEFAULT -15,
+  zonahoraria INT(3) NOT NULL DEFAULT -3,
 
   admin INT(1) NOT NULL DEFAULT 0
 ) ENGINE = {$engine} CHARACTER SET latin1;");

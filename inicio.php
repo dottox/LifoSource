@@ -54,6 +54,13 @@ function process_form() {
 	if (checkPassword($username, $password)) {
 		$_SESSION["loggedin"] = true;
 		$_SESSION["username"] = $username;
+    $_SESSION["isadmin"] = isAdmin($username);
+    db_connect();
+    db_select_db();
+    $time = time();
+    $iplogin = $_SERVER['REMOTE_ADDR'];
+    db_query("UPDATE jugadores SET login = $time, iplogin = '$iplogin' WHERE nombrejug = '$username'");
+    db_close();
 		$ip = $_SERVER['REMOTE_ADDR'];
 		updateLogin($username, $ip);
 		header('Location: perfil.php');

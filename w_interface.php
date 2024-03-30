@@ -26,26 +26,32 @@ function iface() {
 	echo '
 	<html>
 	<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="estilo.css">
 		<title>RPG</title>
 	</head>
 	
 	<body>
-		<nav id="bs">
-			<div id="bs-div">
-				<a id="bs-item" href="inicio.php">Inicio</a>
-				<a id="bs-item" href="perfil.php">Perfil</a>
-				<a id="bs-item" href="">----</a>
-				<a id="bs-item" href="logout.php">Logout</a>
-			</div>
-		</nav>
+    <nav id="bs">
+      <div id="bs-div">
+        
+        <a class="bs-item" href="inicio.php"><i class="fa fa-home" id="bs-icon"></i> <span>Inicio</span></a>
+        <a class="bs-item" href="perfil.php"><i class="fa fa-id-card" id="bs-icon"></i> <span>Perfil</span></a>
+        <a class="bs-item" href="trabajar.php"><i class="fa fa-briefcase" id="bs-icon"></i> <span>Trabajar</span></a>
+        <a class="bs-item" href="combate.php"><i class="fa fa-bolt" id="bs-icon"></i> <span>Combate</span></a>
+        <a class="bs-item" href="logout.php"><i class="fa fa-sign-out" id="bs-icon"></i> <span>Sign-out</span></a>
+      </div>
+    </nav>
 		<img id="logo" src="logo.png">
 
 	';
 
 	echo '<p id="session-msg" ';
 	
-	if (isset($_SESSION["error"]) && $_SESSION["error"] != "") {
+  if (!isset($_SESSION["error"]) && !isset($_SESSION["msg"])) {
+    echo 'style="display: none";">';
+  }
+	else if (isset($_SESSION["error"]) && $_SESSION["error"] != "") {
 		echo 'style="color: rgb(210, 40, 20);">';
 		echo $_SESSION["error"];
 	} 
@@ -63,10 +69,14 @@ function iface() {
 
 	// Acá irían comprobaciones de la página.
 
+  echo '<div id="page-variable-content">';
+
 	// Llamar a la función de creación de la página:
 	if (true) {
 		web();
 	}
+
+  echo '</div>';
 
 	echo '
 	</body>

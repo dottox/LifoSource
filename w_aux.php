@@ -20,36 +20,88 @@ function checkPassword($username, $pass) {
 	
 }
 
+function isAdmin($username) {
+  db_connect();
+  db_select_db();
+  
+  $retval = db_query("SELECT admin FROM jugadores WHERE nombrejug='{$username}'");
+  
+  $row = mysqli_fetch_assoc($retval);
+  
+  if (implode($row) == 1) {
+    db_close();
+    return true;
+  }
+  
+  db_close();
+  return false;
+}
+
+// Rompe la sesión actual salvando el mensaje de error.
 function logout() {
 	session_start();
+  $aux = $_SESSION["error"] ? $_SESSION["error"] : ($_SESSION["msg"] ? $_SESSION["msg"] : "");
 	session_unset();
 	session_destroy();
 
 	session_start();
+  $_SESSION["error"] = $aux;
 }
 
+
+// Se fija si la sesión es válida, checkeando tiempo de inactividad e IP.
+// - retorna true si la sesión es válida o si no hay sesión.
+// - retorna false si la sesión no es válida.
 function checkSession() {
-	if (!isset($_SESSION["loggedin"])) {
+
+  // Se fija si existe la sesión.
+	if (!isset($_SESSION) || !isset($_SESSION["loggedin"])) {
 		return true;
-	} else {
+	} 
+
+  // Si la sesión existe, se fija si es válida.
+  else {
 		db_connect();
 		db_select_db();
-		$retval = db_query("SELECT iplogin FROM jugadores WHERE nombrejug='{$_SESSION["username"]}'");
+		$retval = db_query("SELECT iplogin, login FROM jugadores WHERE nombrejug='{$_SESSION["username"]}'");
 		$row = mysqli_fetch_assoc($retval);
-		if (implode($row)) {
-			if (implode($row) != $_SERVER['REMOTE_ADDR']) {
-				logout();
-				return false;
-			} else {
-				return true;
-		}
-		} else {
-			$_SESSION["error"] = "Sesión no válida";
-			logout();
-			return false;
-		}
-		db.close();
-	}
+
+    // Si no se encuentra ningún jugador con ese nombre, la sesión no es válida.
+    if (!$row) {
+      $_SESSION["error"] = "Sesión no válida";
+      logout();
+      db_close();
+      return false;
+    }
+
+
+    $login = $row['login'];
+    $iplogin = $row['iplogin'];
+
+    // Se fija si el tiempo de inactividad es mayor a 5 minutos.
+    $time = time();
+    if (($time - $login) > 300) {
+      $_SESSION["error"] = "Sesión expirada por inactividad";
+      db_close();
+      logout();
+      return false;
+    } 
+    
+    // Se fija si la IP es la misma con la que se logeó.
+    else {
+      db_query("UPDATE jugadores SET login = '$time' WHERE nombrejug='{$_SESSION["username"]}'");
+      db_close();
+
+      if ($iplogin != $_SERVER['REMOTE_ADDR']) {
+        $_SESSION["error"] = "Una sesión con la misma cuenta está activa en otro lugar";
+        logout();
+        return false;
+      } else {
+        return true;
+      }
+    }
+      
+    }
 }
 
 // Username existe y está dentro de la base de datos
@@ -143,12 +195,12 @@ function pwdgen() {
 
 /*ahora_dia($time) Conversor a dia en formato texto. */
 function ahora_dia($time) {
-	return date('d-m-Y',l_getdate($time));
+	return date('d-m-Y', l_getdate($time));
 }
   
   /*ahora_hora($time) Conversor a hora en formato texto. */
 function ahora_hora($time) {
-	return date('H:i:s',l_getdate($time));
+	return date('H:i:s', l_getdate($time));
 }
   
 function l_setdate($zh) {
@@ -163,6 +215,7 @@ function l_getdate($tiempo) {
 	global $zonahhhh;
 	return $tiempo-$zonahhhh*3600;
 }
+ 
 
 function expsignivel($nivactual,$ultimossubio) {
 	global $confnivel;
