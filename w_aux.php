@@ -27,14 +27,9 @@ function isAdmin($username) {
   $retval = db_query("SELECT admin FROM jugadores WHERE nombrejug='{$username}'");
   
   $row = mysqli_fetch_assoc($retval);
-  
-  if (implode($row) == 1) {
-    db_close();
-    return true;
-  }
-  
   db_close();
-  return false;
+  return implode($row);
+
 }
 
 // Rompe la sesión actual salvando el mensaje de error.
