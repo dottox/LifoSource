@@ -2,7 +2,7 @@
 
 // Funcion para crear la interfaz global
 function iface() {
-	global $form, $check;
+	global $form, $check, $zonahhhh;
 
 	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
 		if (!checkSession()) {
@@ -10,6 +10,8 @@ function iface() {
 			exit();
 		}
 	}
+
+  $zonahhhh = 4;
 
 	// Si existe $check entonces realiza el checkeo de la página.
 	if (isset($check)) {
@@ -37,9 +39,12 @@ function iface() {
         
         <a class="bs-item" href="inicio.php"><i class="fa fa-home" id="bs-icon"></i> <span>Inicio</span></a>
         <a class="bs-item" href="perfil.php"><i class="fa fa-id-card" id="bs-icon"></i> <span>Perfil</span></a>
+        <a class="bs-item" href="mensajeria.php"><i class="fa fa-envelope-open-o" id="bs-icon"></i> <span>Mensajeria</span></a>
+        <a class="bs-item" href="clasificacion.php"><i class="fa fa-trophy" id="bs-icon"></i> <span>Clasificación</span></a>
         <a class="bs-item" href="trabajar.php"><i class="fa fa-briefcase" id="bs-icon"></i> <span>Trabajar</span></a>
         <a class="bs-item" href="combate.php"><i class="fa fa-bolt" id="bs-icon"></i> <span>Combate</span></a>
         <a class="bs-item" href="logout.php"><i class="fa fa-sign-out" id="bs-icon"></i> <span>Sign-out</span></a>
+      
       </div>
     </nav>
 		<img id="logo" src="logo.png">
