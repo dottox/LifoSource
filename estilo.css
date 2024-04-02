@@ -113,6 +113,16 @@ input#login-form-button {
 
 }
 
+#page-table-clasificacion tr {
+  height: 2em;
+  text-align: center;
+}
+
+#page-table-clasificacion tr td img {
+  vertical-align: middle;
+}
+
+
 @media only screen and (max-width : 850px) { 
   .bs-item span {
     display: none;
