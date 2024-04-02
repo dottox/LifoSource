@@ -618,16 +618,16 @@ db_query("INSERT INTO {$conftp}objetos VALUES ('Máscara de Xilok','Yelmo','xye'
 db_query("INSERT INTO {$conftp}objetos VALUES ('Amuleto de Xilok','Amuleto','xam',0,0,        130,250000000,  11,11   ,0,0,0)");
 
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito roja','Navidad','zbanr',0,0,1,10, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito azul','Navidad','zbana',0,0,1,10, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito verde','Navidad','zbanv',0,0,1,10, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito amarilla','Navidad','zband',0,0,1,10, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Arbolito','Navidad','zar',0,0,1,20, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Estrella de arbolito','Navidad','zean',0,0,1,15, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Arbolito de navidad','Navidad','zarn',0,0,1,0, 0,0 ,0,0,4)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Arbolito de navidad con regalos','Navidad','zarnr',0,0,1,0, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito roja','Navidad','zbanr',0,0,1,10, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito azul','Navidad','zbana',0,0,1,10, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito verde','Navidad','zbanv',0,0,1,10, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Bola de arbolito amarilla','Navidad','zband',0,0,1,10, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Arbolito','Navidad','zar',0,0,1,20, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Estrella de arbolito','Navidad','zean',0,0,1,15, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Arbolito de navidad','Navidad','zarn',0,0,1,0, 0,0 ,0,0,4)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Arbolito de navidad con regalos','Navidad','zarnr',0,0,1,0, 0,0 ,0,0,4)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Joya premium','Premium','rprem',0,0,0,0, 0,0 ,0,0,5)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Joya premium','Premium','rprem',0,0,0,0, 0,0 ,0,0,5)");
 
 db_query("INSERT INTO {$conftp}objetos VALUES ('Osito panda de peluche','Recurso','rrrppa',0,0,1,0, 0  ,0,0,0,4)");
 db_query("INSERT INTO {$conftp}objetos VALUES ('Oso panda animado','Mascota','rrrppat',0,0,1,0, 0  ,0,0,0,6)");
@@ -885,67 +885,67 @@ db_query("INSERT INTO {$conftp}jugadores (nombrejug,puntos) VALUES ('AAAAAA14',-
 db_query("INSERT INTO {$conftp}jugadores (nombrejug,puntos) VALUES ('AAAAAA15',-100)");
 
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial H','Z-Esp2','insh',0,0,1,0, 0,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial K','Z-Esp3','insk',0,0,1,0, 0,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial T','Z-Esp4','inst',0,0,1,0, 0,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial B','Z-Esp5','insb',0,0,1,0, 0,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial Z','Z-Esp6','insz',0,0,1,0, 0,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial J','Z-Esp7','insj',0,0,1,0, 0,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial H','Z-Esp2','insh',0,0,1,0, 0,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial K','Z-Esp3','insk',0,0,1,0, 0,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial T','Z-Esp4','inst',0,0,1,0, 0,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial B','Z-Esp5','insb',0,0,1,0, 0,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial Z','Z-Esp6','insz',0,0,1,0, 0,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Insignia especial J','Z-Esp7','insj',0,0,1,0, 0,0 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo Campeonato - Primero','Z-Esp9','toi',0,0,1,0, 1,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo Campeonato - Segundo','Z-Esp10','toii',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo Campeonato - Tercero','Z-Esp11','toiii',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo Campeonato - Primero','Z-Esp9','toi',0,0,1,0, 1,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo Campeonato - Segundo','Z-Esp10','toii',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo Campeonato - Tercero','Z-Esp11','toiii',0,0,1,0, 0,1 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Primer nivel trescientos','Z-Esp12','trescientos',0,0,1,0, 10,10 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma de oro','Z-Esp13','trporo',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma de plata','Z-Esp14','trpplata',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma de bronce','Z-Esp15','trpbronce',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma escritor','Z-Esp17','trpdos',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Competición mascotas','Z-Esp18','tab',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Primer nivel trescientos','Z-Esp12','trescientos',0,0,1,0, 10,10 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma de oro','Z-Esp13','trporo',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma de plata','Z-Esp14','trpplata',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma de bronce','Z-Esp15','trpbronce',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Pluma escritor','Z-Esp17','trpdos',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Competición mascotas','Z-Esp18','tab',0,0,1,0, 0,1 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-A','Z-Esp19','trca',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-B','Z-Esp20','trcb',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-C','Z-Esp21','trcc',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-D','Z-Esp22','trcd',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-E','Z-Esp23','trce',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-F','Z-Esp24','trcf',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-G','Z-Esp25','trcg',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-A','Z-Esp19','trca',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-B','Z-Esp20','trcb',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-C','Z-Esp21','trcc',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-D','Z-Esp22','trcd',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-E','Z-Esp23','trce',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-F','Z-Esp24','trcf',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Carrera 14-G','Z-Esp25','trcg',0,0,1,0, 1,0 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Primero','Z-Esp26','taaaa',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Segundo','Z-Esp27','taaab',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Tercero','Z-Esp28','taaac',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Clan','Z-Esp29','taaad',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: II - Primero','Z-Esp30','taaba',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: II - Segundo','Z-Esp31','taabb',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: II - Tercero','Z-Esp32','taabc',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Primero','Z-Esp33','taaca',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Segundo','Z-Esp34','taacb',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Tercero','Z-Esp35','taacc',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Clan','Z-Esp36','taacd',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: IV - Primero','Z-Esp37','taada',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: IV - Segundo','Z-Esp38','taadb',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: IV - Tercero','Z-Esp39','taadc',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: V - Primero','Z-Esp40','taaea',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: V - Segundo','Z-Esp41','taaeb',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: V - Tercero','Z-Esp42','taaec',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: VI - Primero','Z-Esp43','taafa',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: VI - Segundo','Z-Esp44','taafb',0,0,1,0, 1,0 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: VI - Tercero','Z-Esp45','taafc',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Primero','Z-Esp26','taaaa',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Segundo','Z-Esp27','taaab',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Tercero','Z-Esp28','taaac',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: I - Clan','Z-Esp29','taaad',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: II - Primero','Z-Esp30','taaba',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: II - Segundo','Z-Esp31','taabb',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: II - Tercero','Z-Esp32','taabc',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Primero','Z-Esp33','taaca',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Segundo','Z-Esp34','taacb',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Tercero','Z-Esp35','taacc',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: III - Clan','Z-Esp36','taacd',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: IV - Primero','Z-Esp37','taada',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: IV - Segundo','Z-Esp38','taadb',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: IV - Tercero','Z-Esp39','taadc',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: V - Primero','Z-Esp40','taaea',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: V - Segundo','Z-Esp41','taaeb',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: V - Tercero','Z-Esp42','taaec',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: VI - Primero','Z-Esp43','taafa',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: VI - Segundo','Z-Esp44','taafb',0,0,1,0, 1,0 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: VI - Tercero','Z-Esp45','taafc',0,0,1,0, 1,0 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Historia oro','Z-Esp47','trhoro',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Historia plata','Z-Esp48','trhplata',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Historia bronce','Z-Esp49','trhbronce',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Historia oro','Z-Esp47','trhoro',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Historia plata','Z-Esp48','trhplata',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Historia bronce','Z-Esp49','trhbronce',0,0,1,0, 0,1 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Competición Variedades','Z-Esp50','trdv',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Competición Clanes','Z-Esp51','trdc',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Competición Variedades','Z-Esp50','trdv',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Competición Clanes','Z-Esp51','trdc',0,0,1,0, 0,1 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Primer nivel cuatrocientos','Z-Esp52','cuatrocientos',0,0,1,0, 10,10 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Primer nivel cuatrocientos','Z-Esp52','cuatrocientos',0,0,1,0, 10,10 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: La búsqueda oscura','Z-Esp53','trbos',0,0,1,0, 1,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: La búsqueda oscura','Z-Esp53','trbos',0,0,1,0, 1,1 ,0,0,0)");
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Primero','Z-Esp54','trfa',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Segundo','Z-Esp55','trfb',0,0,1,0, 0,1 ,0,0,0)");
-db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Tercero','Z-Esp56','trfc',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Primero','Z-Esp54','trfa',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Segundo','Z-Esp55','trfb',0,0,1,0, 0,1 ,0,0,0)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Tercero','Z-Esp56','trfc',0,0,1,0, 0,1 ,0,0,0)");
 
 
 
@@ -959,7 +959,7 @@ db_query("INSERT INTO {$conftp}objetos VALUES ('Trofeo: Combates - Tercero','Z-E
 
 #NEW LIFO UPDATE
 
-db_query("INSERT INTO {$conftp}objetos VALUES ('Esquirla de joya premium','Premium','rpreme',0,0,0,0, 0,0 ,0,0,8)");
+// db_query("INSERT INTO {$conftp}objetos VALUES ('Esquirla de joya premium','Premium','rpreme',0,0,0,0, 0,0 ,0,0,8)");
 
 db_query("INSERT INTO {$conftp}objetos VALUES ('Mapa: Campos de Lifo','Mapa','rmapaacl',1,0,1,100, 0,5,0,0,7)");
 db_query("INSERT INTO {$conftp}exploracion VALUES ('Mapa: Campos de Lifo','Mapa: Bosques de Lifo',10,100,5,1)");
