@@ -46,22 +46,19 @@
   // Está abierto el registro de jugadores?
   $confregistro = 1;
 
-  // Modo debug?
-  $confdebug = 0;
-
-  // Experiencia necesaria para encontrar un objeto
-  $confobj = 120;
   // Experiencia necesaria para subir un nivel
-  $confnivel = 120;
+  $confnivel = 200;
+
+  // Tiempo mínimo para conseguir items en trabajo
+  $conftiempominimoitems = 1;
+
+  // Probabilidad de conseguir items
+  $confprobabilidaditems = 0.01;
   
   // Intervalo en segundos entre ataques
-  $confnoatacarhasta = 2;
-  // Tiempo de protección en segundos tras recibir ataque
-  $confprotegidohasta = 2;
+  $confnoatacarhasta = 60;
   // Oro mínimo para atacar
-  $conforonivelataca = 2;
-  // Diferencia máxima de niveles para atacar
-  $confdifnivel = 100;
+  $conforonivelataca = 0;
   // Máxima experiencia a ganar en un combate
   $confganacombexpmax = 600;
   // Mínima experiencia a perder en un combate
@@ -69,14 +66,12 @@
 
   // Cuántos jugadores mostrar alrededor en la clasificación
   $confalredhigh = 3;
-  // Cuántos clanes mostrar alrededor en la clasificación
-  $confalredchigh = 3;
 
   // Intervalo en segundos entre comer  
-  $confnocomerhasta = 2;
+  $confnocomerhasta = 60;
 
   // Intervalo en segundos entre explorar 
-  $confnoexplorarhasta = 2;
+  $confnoexplorarhasta = 60;
 
 
 

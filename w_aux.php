@@ -32,6 +32,102 @@ function isAdmin($username) {
 
 }
 
+function expNivelActual($nivel) {
+  global $confnivel;
+  return floor(pow($nivel, 1.5) * $confnivel);
+}
+
+
+// Retorna la cantidad de niveles a subir.
+function calcularNivel($expGanada, $expJug, $nivelActual) {
+  global $confnivel;
+  $expNivelActual = expNivelActual($nivelActual);
+  $expSobra = $expJug + $expGanada - $expNivelActual;
+  while ($expSobra >= 0) {
+    $expNivelActual = expNivelActual($nivelActual + 1);
+    if ($expSobra >= $expNivelActual) {
+      $nivelActual++;
+      $expSobra -= $expNivelActual;
+    } else {
+      return $nivelActual;
+    }
+  } 
+}
+  
+
+function darItems($items, $username, &$puntos) {
+  $new_mensaje = "";
+  for ($i = 0; $i < count($items); $i++) {
+    $nombreobj = $items[$i]['nombreobj'];
+    $img = $items[$i]['img'];
+    $puntosencontrar = $items[$i]['puntosencontrar'];
+
+    $ret = db_query("SELECT * FROM tiene WHERE nombrejug = '$username' AND nombreobj = '$nombreobj'");
+
+    if (mysqli_num_rows($ret) > 0) {
+      db_query("UPDATE tiene SET cantidad = cantidad + 1 WHERE nombrejug = '$username' AND nombreobj = '$nombreobj'");
+    } else {
+      db_query("INSERT INTO tiene(nombrejug, nombreobj, cantidad, usado) VALUES (
+        '{$username}',
+        '{$nombreobj}',
+        1,
+        0
+      )");
+    }
+
+    $puntos += $puntosencontrar;
+
+    $img = "<img src=\"img/{$img}.gif\" style=\"vertical-align:middle;\" alt=\"{$nombreobj}\"/>";
+    $new_mensaje .= "<br>Has encontrado: $img $nombreobj. Recibiste +$puntosencontrar puntos de experiencia.<br>";
+  }
+
+  if ($new_mensaje == "") {
+    $new_mensaje = "<br>No has encontrado ningún item.";
+  }
+  return $new_mensaje;
+}
+
+function calcularItems($tiempoTrabajado, $nivelActual, $experiencia) {
+  global $conftiempominimoitems, $confprobabilidaditems;
+  
+  $items = [];
+
+  if ($tiempoTrabajado < $conftiempominimoitems) {
+    return $items;
+  } else {
+    $tiempo = $tiempoTrabajado - $conftiempominimoitems;
+  }
+
+  $probabilidad = $confprobabilidaditems * $tiempo; // tiempo minimo por items = 60; 100% a los 600 segundos
+  $probabilidad = 600;
+  
+  $ret = db_query("SELECT nombreobj, nivelencontrar, posibilidad, puntosencontrar, img 
+  FROM objetos 
+  WHERE nivelencontrar <= '$nivelActual' 
+  AND posibilidad != 0 
+  AND tipo != 'Mapa'
+  ORDER BY nivelencontrar DESC");
+  $row = mysqli_fetch_assoc($ret);
+  
+  $diff = 1;
+  while (($rand = rand(0, 100)) < $probabilidad/$diff) {
+    $resta = pow(300, 1 + (0.01 * $nivelActual));
+    if $resta > 90000 {
+      $resta = 90000;
+    }
+    if (rand(0, 100000-$resta) <= $row['posibilidad']) {
+      array_push($items, ['nombreobj' => $row['nombreobj'], 'puntosencontrar' => $row['puntosencontrar'], 'img' => $row['img']]);
+      $diff++;
+    }
+    
+    $row = mysqli_fetch_assoc($ret);
+    if (!$row || count($items) > 10) {
+      break;
+    }
+  }
+  return $items;
+}
+
 // Rompe la sesión actual salvando el mensaje de error.
 function logout() {
 	session_start();

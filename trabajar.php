@@ -71,6 +71,9 @@ function web() {
 }
 
 function process_form() {
+  global $confnivel, $conftiempominimoitems, $confprobabilidaditems;
+
+  // Echar al usuario si no se encontró ningun POST.
   if (!isset($_POST['trabajo']) && !isset($_POST['cancelar']) && !isset($_POST['reclamar'])) {
     return;
   }
@@ -78,49 +81,89 @@ function process_form() {
   db_connect();
   db_select_db();
   $username = $_SESSION['username'];
+
   $ret = db_query("SELECT trabajando, fintrabajo FROM jugadores WHERE nombrejug = '$username'");
   $row = mysqli_fetch_assoc($ret);
-  $trabajando = $row['trabajando'];
-  $fintrabajo = $row['fintrabajo'];
-  
+  $inicioTrabajo = $row['trabajando'];
+  $finTrabajo = $row['fintrabajo']; 
   $time = time();
 
+
+
+
+  /* --- SISTEMA DE RECLAMAR TRABAJO --- */
   if (isset($_POST['reclamar'])) {
-    if ($fintrabajo > time()) {
+    if ($finTrabajo > time()) {
       $_SESSION['error'] = 'No has terminado de trabajar';
       header('Location: trabajar.php');
       db_close();
       exit();
     }
 
-    $rettrabajo = db_query("SELECT oro, puntos FROM trabajos WHERE segundos = $fintrabajo - $trabajando");
-    $rowtrabajo = mysqli_fetch_assoc($rettrabajo);
-    $oro = $rowtrabajo['oro'];
-    $puntos = $rowtrabajo['puntos'];
+    $tiempoTrabajado = $finTrabajo - $inicioTrabajo;
 
-    db_query("UPDATE jugadores SET fintrabajo = 0, trabajando = 0, trabajado = trabajado + $fintrabajo - $trabajando, oro = oro + $oro, puntos = puntos + $puntos WHERE nombrejug = '$username'");
+    // Obtener nivel del usuario
+    $retjug = db_query("SELECT puntos, nivel FROM jugadores WHERE nombrejug = '$username'");
+    $rowjug = mysqli_fetch_assoc($retjug);
+    $nivelJug = $rowjug['nivel'];
+    $puntosJug = $rowjug['puntos'];
+
+    // Obtener oro y puntos del trabajo realizado
+    $retTrabajo = db_query("SELECT oro, puntos FROM trabajos WHERE segundos = $tiempoTrabajado");
+    $rowTrabajo = mysqli_fetch_assoc($retTrabajo);
+    $oro = $rowTrabajo['oro'];
+    $puntos = $rowTrabajo['puntos'];
+
+    // Calcular items
+    $items = calcularItems($tiempoTrabajado, $nivelJug, $puntos);
+
+    $mensaje = "Has terminado tu trabajo. Has ganado $oro de oro y $puntos puntos.<br>";
+
+    // Dar items
+    $mensaje .= darItems($items, $username, $puntos);
+
+    // Calcular nivel a subir si es que sube
+    $nivelASubir = calcularNivel($puntos, $puntosJug, $nivelJug);
+
+    // Actualizar la row del jugador.
+    db_query("UPDATE jugadores SET nivel = $nivelASubir, fintrabajo = 0, trabajando = 0, trabajado = trabajado + $tiempoTrabajado, oro = oro + $oro, puntos = puntos + $puntos WHERE nombrejug = '$username'");
+    
+    // Mensaje de subir de nivel
+    if ($nivelASubir > $nivelJug) {
+      $nivelDiff = $nivelASubir - $nivelJug;
+      $mensaje .= "<br><br>Has subido $nivelDiff nivel(es).";
+    }
+
+    // Insertar el mensaje
     db_query("INSERT INTO mensajes(nombrejug, remitente, hora, visto, reportado, mensaje) VALUES (
-      nombrejug = '$username',
-      remitente = 'Sistema',
-      hora = $time,
-      visto = 0,
-      reportado = 0,
-      mensaje = 'Has terminado tu trabajo. Has ganado $oro de oro y $puntos puntos.'
-      )");
+      '{$username}',
+      'Sistema',
+      $time,
+      0,
+      0,
+      '{$mensaje}'
+    )");
+
+    // Cerrar todo y redirigir
     db_close();
-    $_SESSION['msg'] = "Has terminado tu trabajo. Has ganado $oro de oro y $puntos puntos.";
-    header('Location: trabajar.php');
+    $_SESSION['msg'] = "Has terminado tu trabajo.";
+    header('Location: mensajeria.php');
     exit();
   }
+
+  /* --- SISTEMA DE COMENZAR A TRABAJAR --- */
   else if (isset($_POST['trabajo'])) {
     $trabajo = $_POST['trabajo'];
-    if ($time < $fintrabajo) {
+
+    // Si ya está trabajando: sacarlo
+    if ($time < $finTrabajo) {
       $_SESSION['error'] = 'Ya estás trabajando en otro trabajo';
       header('Location: trabajar.php');
       db_close();
       exit();
     }
 
+    // Verificar que el trabajo exista
     $flag = false;
     $ret = db_query("SELECT segundos, espremium FROM trabajos");
     while ($row = mysqli_fetch_assoc($ret)) {
@@ -132,6 +175,7 @@ function process_form() {
       }
     }
   
+    // Si no se encuentra el trabajo: sacarlo
     if (!$flag) {
       $_SESSION['error'] = "Trabajo no encontrado: $segundos, $trabajo";
       header('Location: trabajar.php');
@@ -139,6 +183,7 @@ function process_form() {
       exit();
     }
   
+    // Si el trabajo es premium y el usuario no es admin: sacarlo
     if ($espremium && !$_SESSION['isadmin']) {
       $_SESSION['error'] = 'No puedes realizar trabajos premium';
       header('Location: trabajar.php');
@@ -146,56 +191,95 @@ function process_form() {
       exit();
     }
     
+    // Comenzar el trabajo
     $ret = db_query("UPDATE jugadores SET fintrabajo = $time + $segundos, trabajando = $time WHERE nombrejug = '$username'");
+
+    // Cerrar todo, sumar el mensaje y redirigir
     db_close();
     $_SESSION['msg'] = "Has comenzado a trabajar.";
     header('Location: trabajar.php');
     exit(); 
   }
+
+  /* --- SISTEMA DE CANCELAR TRABAJO --- */
   else if (isset($_POST['cancelar'])) {
-    if ($time > $fintrabajo) {
+
+    // Si no está trabajando: sacarlo
+    if ($finTrabajo == 0) {
       $_SESSION['error'] = 'No estás trabajando';
       header('Location: trabajar.php');
       db_close();
       exit();
     }
 
-    $rettrabajo = db_query("SELECT oro, puntos FROM trabajos WHERE segundos = $fintrabajo - $trabajando");
-    $rowtrabajo = mysqli_fetch_assoc($rettrabajo);
-    $oro = $rowtrabajo['oro'];
-    $puntos = $rowtrabajo['puntos'];
+    //Obtener nivel y puntos del jugador
+    $retJug = db_query("SELECT nivel, puntos FROM jugadores WHERE nombrejug = '$username'");
+    $rowJug = mysqli_fetch_assoc($retJug);
+    $nivelJug = $rowJug['nivel'];
+    $puntosJug = $rowJug['puntos'];
 
-    $tiempo_restante = $time - $trabajando;
-    $div = $tiempo_restante / ($fintrabajo - $trabajando);
+    // Obtener oro y puntos del trabajo realizado
+    $retTrabajo = db_query("SELECT oro, puntos FROM trabajos WHERE segundos = $finTrabajo - $inicioTrabajo");
+    $rowTrabajo = mysqli_fetch_assoc($retTrabajo);
+    $oro = $rowTrabajo['oro'];
+    $puntos = $rowTrabajo['puntos'];
+
+    // Calcular el tiempo restante:
+    $tiempoTrabajado = $time - $inicioTrabajo;
+
+    // Calcular el porcentaje de trabajo completado
+    $div = $tiempoTrabajado / ($finTrabajo - $inicioTrabajo);
     if ($div > 1) {
       $div = 1;
     } else if ($div < 0.1) {
       $div = 0;
     }
 
-
-    // TO-DO: Agregar sistema para dar items si el tiempo trabajo es mayor a 1 hora.
-    //        (Aumentando probabilidades cuanto más tiempo sea.)
-
+    // Calcular la recompensa:
     $oro = round($oro * $div);
     $puntos = round($puntos * $div);
-    $mensaje = "Has cancelado tu trabajo. Has ganado $oro de oro y $puntos puntos.";
+  
+    // Calcular items
+    $items = calcularItems($tiempoTrabajado, $nivelJug, $puntos);
     
-    db_query("UPDATE jugadores SET fintrabajo = 0, trabajando = 0, trabajado = trabajado + $tiempo_restante, oro = oro + $oro, puntos = puntos + $puntos WHERE nombrejug = '$username'");
+    $mensaje = "Has cancelado tu trabajo. Has ganado $oro de oro y $puntos puntos.<br>";
+    
+    // Dar items
+    $mensaje .= darItems($items, $username, $puntos);
+    
+    
+    
+    // Calcular nivel a subir si es que sube
+    $nivelASubir = calcularNivel($puntos, $puntosJug, $nivelJug);
+    
+    // Mensaje de subir de nivel
+    if ($nivelASubir > $nivelJug) {
+      $nivelDiff = $nivelASubir - $nivelJug;
+      $mensaje .= "<br><br>Has subido $nivelDiff nivel(es).";
+    }
+    
+    
+    // Actualizar la row del jugador.
+    db_query("UPDATE jugadores SET nivel = $nivelASubir, fintrabajo = 0, trabajando = 0, trabajado = trabajado + $tiempoTrabajado, oro = oro + $oro, puntos = puntos + $puntos WHERE nombrejug = '$username'");
+    
+    
+    // Insertar el mensaje
     db_query("INSERT INTO mensajes(nombrejug, remitente, hora, visto, reportado, mensaje) VALUES (
-      '$username',
+      '{$username}',
       'Sistema',
       $time,
       0,
       0,
-      '$mensaje'
-      )");
+      '{$mensaje}'
+    )");
+
+    // Cerrar todo y redirigir
     db_close();
     $_SESSION['msg'] = "Has cancelado tu trabajo. Has ganado $oro de oro y $puntos puntos.";
-    header('Location: trabajar.php');
+    header('Location: mensajeria.php');
     exit();
   }
-
+  
 
 
 

@@ -56,12 +56,12 @@ db_query("INSERT INTO {$conftp}trabajos VALUES (21600,'6 horas / 3250 exp / 325 
 db_query("INSERT INTO {$conftp}trabajos VALUES (21602,'*premium* 6 horas / 3600 exp / 720 oro',3600,720,1)");
 //db_query("INSERT INTO {$conftp}trabajos VALUES (21603,'*premium* 6 horas / 1800 exp / 1440 oro',1800,1440,1)");
 
-db_query("INSERT INTO {$conftp}trabajos VALUES (25200,'7 horas / 3790 exp / 379 oro',3790,379,0)");
+db_query("INSERT INTO {$conftp}trabajos VALUES (20,'7 horas / 3790 exp / 379 oro',3790,379,0)");
 //db_query("INSERT INTO {$conftp}trabajos VALUES (25201,'7 horas / 1895 exp / 758 oro',1895,758,0)");
 db_query("INSERT INTO {$conftp}trabajos VALUES (25202,'*premium* 7 horas / 4200 exp / 840 oro',4200,840,1)");
 //db_query("INSERT INTO {$conftp}trabajos VALUES (25203,'*premium* 7 horas / 2100 exp / 1680 oro',2100,1680,1)");
 
-db_query("INSERT INTO {$conftp}trabajos VALUES (28800,'8 horas / 4330 exp / 433 oro',4330,433,0)");
+db_query("INSERT INTO {$conftp}trabajos VALUES (10,'8 horas / 4330 exp / 433 oro',4330,433,0)");
 //db_query("INSERT INTO {$conftp}trabajos VALUES (28801,'8 horas / 2165 exp / 866 oro',2165,866,0)");
 db_query("INSERT INTO {$conftp}trabajos VALUES (28802,'*premium* 8 horas / 4800 exp / 960 oro',4800,960,1)");
 //db_query("INSERT INTO {$conftp}trabajos VALUES (28803,'*premium* 8 horas / 2400 exp / 1920 oro',2400,1920,1)");
