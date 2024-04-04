@@ -112,7 +112,7 @@ function calcularItems($tiempoTrabajado, $nivelActual, $experiencia) {
   $diff = 1;
   while (($rand = rand(0, 100)) < $probabilidad/$diff) {
     $resta = pow(300, 1 + (0.01 * $nivelActual));
-    if $resta > 90000 {
+    if ($resta > 90000) {
       $resta = 90000;
     }
     if (rand(0, 100000-$resta) <= $row['posibilidad']) {
